@@ -8,7 +8,7 @@ arch=("x86_64" "aarch64")
 url="https://github.com/StrikerX3/Ymir"
 license=("GPL3")
 depends=("sdl3")
-makedepends=("cmake" "clang" "git" "ninja" "python-jinja" "unzip" "zip")
+makedepends=("cmake" "gcc" "git" "ninja" "python-jinja" "unzip" "zip")
 provides=($pkgname)
 conflicts=($pkgname)
 source=(
@@ -26,16 +26,14 @@ prepare() {
 }
 
 build() {
-    export CC=clang
-    export CXX=clang++
     cd "$srcdir/ymir"
 
     local cmake_options=(
         -S .
         -B build
         -G Ninja
-        -D CMAKE_C_COMPILER=clang
-        -D CMAKE_CXX_COMPILER=clang++
+        -D CMAKE_C_COMPILER=gcc
+        -D CMAKE_CXX_COMPILER=g++
         -D CMAKE_MAKE_PROGRAM=ninja
         #-D CMAKE_TOOLCHAIN_FILE=vcpkg/scripts/buildsystems/vcpkg.cmake
         -D Ymir_ENABLE_TESTS=OFF
