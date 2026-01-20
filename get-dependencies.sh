@@ -7,9 +7,10 @@ ARCH=$(uname -m)
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
 pacman -Syu --noconfirm fmt \
-    cereal      \
-    cxxopts     \
-    chrono-date \
+    cereal        \
+    cxxopts       \
+    chrono-date   \
+    pipewire-jack \
     rtmidi
 
 echo "Installing debloated packages..."
