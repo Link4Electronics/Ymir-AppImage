@@ -28,7 +28,8 @@ prepare() {
 build() {
     export CC=clang
     export CXX=clang++
-    cd $srcdir/ymir
+    cd "$srcdir/ymir"
+
     local cmake_options=(
         -S .
         -B build
@@ -37,13 +38,18 @@ build() {
         -D CMAKE_CXX_COMPILER=clang++
         -D CMAKE_MAKE_PROGRAM=ninja
         -D CMAKE_TOOLCHAIN_FILE=vcpkg/scripts/buildsystems/vcpkg.cmake
-        -D Ymir_AVX2=ON
         -D Ymir_ENABLE_TESTS=OFF
         -D Ymir_ENABLE_DEVLOG=OFF
         -D Ymir_ENABLE_IMGUI_DEMO=OFF
         -D Ymir_ENABLE_SANDBOX=OFF
         --fresh
     )
+    # Enable AVX2 only for x86_64
+    if [ "$CARCH" == "x86_64" ]; then
+        cmake_options+=(-D Ymir__AVX2=ON)
+    else
+        cmake_options+=(-D Ymir_AVX2=OFF)
+    fi
     cmake "${cmake_options[@]}"
     cmake --build build
 }
