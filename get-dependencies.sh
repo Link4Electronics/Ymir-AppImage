@@ -6,7 +6,8 @@ ARCH=$(uname -m)
 
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
-pacman -Syu --noconfirm fmt #PACKAGESHERE
+pacman -Syu --noconfirm fmt \
+    cereal
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
