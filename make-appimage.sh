@@ -20,4 +20,4 @@ quick-sharun /usr/bin/ymir-emu
 # Additional changes can be done in between here
 
 # Turn AppDir into AppImage
-#quick-sharun --make-appimage
+quick-sharun --make-appimage
