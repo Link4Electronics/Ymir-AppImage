@@ -8,6 +8,7 @@ echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
 pacman -Syu --noconfirm \
     autoconf-archive \
+    clang            \
     cmake            \
     libdecor         \ 
     libtool          \
