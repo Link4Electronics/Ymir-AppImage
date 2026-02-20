@@ -7,8 +7,9 @@ ARCH=$(uname -m)
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
 pacman -Syu --noconfirm \
-    cmake         \
-    pipewire-jack \
+    cmake          \
+    pipewire-audio \
+    pipewire-jack  \
     vcpkg
 
 echo "Installing debloated packages..."
