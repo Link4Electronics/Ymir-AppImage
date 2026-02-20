@@ -10,6 +10,7 @@ pacman -Syu --noconfirm \
     cmake          \
     pipewire-audio \
     pipewire-jack  \
+    python         \
     vcpkg
 
 echo "Installing debloated packages..."
