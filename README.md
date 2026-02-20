@@ -11,7 +11,7 @@
 </p>
 
 
-| Latest Stable Release | Upstream URL |
+| Latest Nightly Release | Upstream URL |
 | :---: | :---: |
 | [Click here](https://github.com/pkgforge-dev/Ymir-AppImage/releases/latest) | [Click here](https://github.com/StrikerX3/Ymir) |
 
