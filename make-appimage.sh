@@ -15,7 +15,7 @@ export DEPLOY_VULKAN=1
 #export DEPLOY_PIPEWIRE=1
 
 # Deploy dependencies
-quick-sharun /usr/bin/ymir-emu
+quick-sharun ./AppDir/bin/ymir-sdl3
 
 # Additional changes can be done in between here
 
