@@ -11,8 +11,6 @@ pacman -Syu --noconfirm \
     clang            \
     cmake            \
     libdecor         \
-    pipewire-audio   \
-    pipewire-jack    \
     python           \
     vcpkg
 
