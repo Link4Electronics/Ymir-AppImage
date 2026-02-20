@@ -47,7 +47,7 @@ cmake_opts=(
 if [ "$ARCH" == "x86_64" ]; then
     cmake_opts+=(-D Ymir_AVX2=ON)
 else
-    cmake_opts+=(-D Ymir_AVX2=OFF)
+    cmake_opts+=(-D Ymir_AVX2=OFF -DCMAKE_CXX_FLAGS="-flax-vector-conversions")
 fi
 
 cmake .. "${cmake_opts[@]}"
