@@ -7,9 +7,7 @@ ARCH=$(uname -m)
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
 pacman -Syu --noconfirm \
-    autoconf         \
     autoconf-archive \
-    automake         \
     cmake            \
     libdecor         \ 
     libtool          \
