@@ -38,9 +38,9 @@ cmake_opts=(
     -D Ymir_ENABLE_IMGUI_DEMO=OFF
     -D Ymir_ENABLE_SANDBOX=OFF
     -DCMAKE_TOOLCHAIN_FILE=vcpkg/scripts/buildsystems/vcpkg.cmake
+    -DCMAKE_BUILD_TYPE=Release
     --fresh
 )
-
 # Enable AVX2 only for x86_64
 if [ "$ARCH" == "x86_64" ]; then
     cmake_opts+=(-D Ymir_AVX2=ON)
