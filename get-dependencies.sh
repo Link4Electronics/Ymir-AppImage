@@ -32,23 +32,22 @@ echo "$VERSION" > ~/version
 mkdir -p ./AppDir/bin
 cd ./Ymir
 mkdir -p build && cd build
-cmake_opts=(
-    -D Ymir_ENABLE_TESTS=OFF
-    -D Ymir_ENABLE_DEVLOG=OFF
-    -D Ymir_ENABLE_IMGUI_DEMO=OFF
-    -D Ymir_ENABLE_SANDBOX=OFF
-    -DCMAKE_TOOLCHAIN_FILE=vcpkg/scripts/buildsystems/vcpkg.cmake
-    -DCMAKE_BUILD_TYPE=Release
+set -- \
+    -D Ymir_ENABLE_TESTS=OFF \
+    -D Ymir_ENABLE_DEVLOG=OFF \
+    -D Ymir_ENABLE_IMGUI_DEMO=OFF \
+    -D Ymir_ENABLE_SANDBOX=OFF \
+    -DCMAKE_TOOLCHAIN_FILE=vcpkg/scripts/buildsystems/vcpkg.cmake \
+    -DCMAKE_BUILD_TYPE=Release \
     --fresh
-)
 # Enable AVX2 only for x86_64
-if [ "$ARCH" == "x86_64" ]; then
-    cmake_opts+=(-D Ymir_AVX2=ON)
+if [ "$ARCH" = "x86_64" ]; then
+    set -- "$@" -D Ymir_AVX2=ON
 else
-    cmake_opts+=(-D Ymir_AVX2=OFF -DCMAKE_CXX_FLAGS="-flax-vector-conversions")
+   set -- "$@" -D Ymir_AVX2=OFF -DCMAKE_CXX_FLAGS="-flax-vector-conversions"
 fi
 
-cmake .. "${cmake_opts[@]}"
+cmake .. "$@"
 make -j$(nproc)
 mv -v apps/ymir-sdl3/ymir-sdl3-0.3.0 ../../AppDir/bin/ymir-sdl3
 mv -v ../apps/ymir-sdl3/res/ymir.png ../../AppDir
